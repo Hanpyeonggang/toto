@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>Always Green</title>
+  <style>
+    html{font-family: 'SUITE';src: url('SUITE-Variable.woff2') format('woff2');}
+    @font-face {
+      font-family: 'CirrusCumulus';
+      src: url('CirrusCumulus.woff') format('woff');}
+
+      body, h1, h2, h3, p, ul, li { margin: 0; padding: 0; }
+      h1 { font-family: "CirrusCumulus"; font-weight: normal; font-size: 10rem; word-break: keep-all; line-height: 1.7; }
+      h2 { font-family: "SUITE"; font-weight: normal; word-break: keep-all; line-height: 1.5; font-size: 2rem; margin-bottom: 20px;font-weight: bold; }
+      p { font-family: 'SUITE'; word-break: keep-all; line-height: 1.7; font-size: 1.3rem; }
+    nav {background: rgba(0, 0, 0, 0.3);backdrop-filter: blur(3px);border-bottom: 2px solid black;position: fixed;top: 0;width: 100%;z-index: 1000;justify-content:space-between;padding: 5px}
+      ul {gap: 10px;list-style-type: none;}
+      a {background: black;color: white;padding: 8px 16px;
+        border-radius: 4px;text-decoration: none;font-weight: 500;
+        display: block;}
+      a:hover {background: #00FF2F;transition: all 1s;}
+
+    .logo-img {height: 45px;}
+    .logoimg {max-width: 600px}
+    .wrap { width: 100%; max-width: 1200px; margin: auto; padding: 0 20px; text-align: center;}
+    .wrap2 { width: 100%; max-width: 600px; margin: auto; padding: 0 20px; text-align: center;}
+    .wrap3 { width: 100%; max-width: 1000px; margin: auto; display: flex; justify-content: space-between; text-align: left; border-top: 2px solid black; padding: 60px 0;  gap: 100px; }
+    .section { padding: 150px 0 300px; }
+    .section1 { padding: 50px 0 50px; }
+    .section2 { padding: 200px 0 160px; border: 2px solid #00FF2F; border-radius: 10px; }
+    .flex { display: flex; justify-content: space-between; align-items: center; }
+    .bg-intro {background-image: url('bg1.jpg');background-size: cover;width: 100vw; height: 100vh;}
+    .position1 { position: absolute; }
+    .logo-img { height: 45px; }
+    .footer { background: #00FF2F; padding: 40px 20px; margin-top: 100px; }
+    .footer p { font-size: 1rem; }
+    .img-center { display: block; margin: 0 auto; width: 80%;}
+    .center-text {max-width: 600px;margin: 0 auto;text-align: center;}
+    .left { flex: 1; text-align: left; }
+    .right { flex: 2; text-align: left; }
+    .footer-wrap { width: 100%; max-width: 1200px; margin: auto; padding: 0 20px; }
+    .q-wrap {width: 100%;max-width: 1000px;margin: 0 auto;
+      padding: 80px 20px;background-image: url('bg.png');
+      background-repeat: no-repeat;background-position: center top; background-size: cover; }
+    .q-block {width: 100%;margin: 230px 0;padding: 0 20px;}
+    .q-content {display: flex;}
+    .q-item {position: relative;max-width: 600px; }
+    .q-img-wrapper img {width: 100%;height: auto;display: block;}
+    .q-text {position: absolute;top: 50%;left: 50%;
+      transform: translate(-50%, -50%);color: #00FF2F;text-align: center;}
+    .q-text p {font-size: 1.3rem;line-height: 1.6;}
+    .q-block.left .q-content {justify-content: flex-start;}
+    .q-block.right .q-content {justify-content: flex-end;}
+    .q-background {width: 100%;background: linear-gradient(black, white);}
+    .q-img-wrapper {position: relative;}
+    .q-img-wrapper .default-img,.q-img-wrapper .hover-img {
+  width: 100%;height: auto;display: block;}
+  .q-img-wrapper .hover-img {position: absolute;top: 0;left: 0;opacity: 0;transition: opacity 0.4s ease;pointer-events: none;}
+  .q-img-wrapper:hover .hover-img {opacity: 1;}
+  .q-img-wrapper:hover .default-img {opacity: 0;}
+  .black {background: black; color: white;}
+  .review-slider-outer {overflow: hidden;width: 100%;position: relative;}
+  .review-slider {overflow: visible;width: 100%;position: relative;padding: 40px 0;}
+  .review-track {display: flex;width: max-content;animation: moveLeft 10s linear infinite;}
+    @keyframes moveLeft { 0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }}
+  .review-slider:hover .review-track {animation-play-state: paused;}
+  .review-card {flex: 0 0 auto;width: 300px;height: 200px;background: black;color: white;
+    padding: 20px;margin-right: 30px;border-radius: 12px;text-align: left; box-sizing: border-box;
+    display: flex;flex-direction: column;justify-content: space-between;transition: transform 0.3s ease, box-shadow 0.3s ease;position: relative;z-index: 1;}
+  .review-card:hover {transform: scale(1.1);z-index: 10;box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);}
+  .review-box {background: black;color: white;width: 320px;
+    height: 200px;padding: 20px;border-radius: 12px;
+    display: flex;flex-direction: column;justify-content: space-between;box-shadow: 0 4px 8px rgba(0,0,0,0.15);}
+  .review-header {display: flex;justify-content: space-between;
+    align-items: center;margin-bottom: 12px;}
+  .reviewer-icon {width: 20px;height: 20px;
+    background-color: #00FF33;border-radius: 50%;margin-right: 10px;}
+  .name {font-weight: bold;font-size: 1.1rem;
+    display: flex;align-items: center;}
+  .stars {color: #00FF2F;font-size: 1.1rem;}
+  .review-text {font-size: 1rem;line-height: 1.7;}
+  .ranking-list {list-style: none;padding: 0;max-width: 500px;margin: 0 auto;}
+  .ranking-list li {display: flex;justify-content: space-between;align-items: center;
+    background: #D9D9D9;border-radius: 12px;border: 2px:;padding: 15px 20px;margin-bottom: 12px;
+    font-size: 1.2rem;font-weight: 500;transition: transform 0.3s ease, box-shadow 0.3s ease; /* 부드럽게 */}
+
+  .ranking-list li:hover { transform: scale(1.03);box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);  background:#00FF2F; color: black;}
+  .rank-num {color:black;font-weight: bold;min-width: 30px;
+    display: inline-block;}
+
+.drop {
+  display: block;
+  margin: 0 auto;
+  width: 80%;
+  transform: translateY(0);
+}
+
+.drop:hover {
+  animation: dropAndFloat 2.5s ease-in-out forwards;
+}
+
+@keyframes dropAndFloat {
+  0%   { transform: translateY(-150px); opacity: 0; }
+  20%  { transform: translateY(0); opacity: 1; }
+  40%  { transform: translateY(-20px); }
+  60%  { transform: translateY(10px); }
+  80%  { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+
+.fill-image {
+  width: 1000px;        /* 원하는 가로 길이 */
+  height: 700px;       /* 원하는 세로 길이 */
+  object-fit: fill;    /* 이미지 비율 무시하고 꽉 채우기 */
+}
+
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0); }
+}
+
+.q-img-wrapper:hover .default-img,
+.q-img-wrapper:hover .hover-img {
+  animation: float 1.2s ease-in-out infinite;
+}
+
+.intro-fixed {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #00FF2F;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  animation: fadeOutIntro 1s ease-out 1s forwards;
+}
+.intro-fixed h1 {
+  font-size: 3rem;
+  color: black;
+  font-weight: bold;
+  animation: zoomOutText 1s ease-out 1s forwards;
+}
+@keyframes fadeOutIntro {
+  0%   { opacity: 1; }
+  100% { opacity: 0; visibility: hidden; }
+}
+
+@keyframes zoomOutText {
+  0%   { transform: scale(1); opacity: 1; }
+  100% { transform: scale(1.3); opacity: 0; }
+}
+
+.download-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.download-btn {
+  background: black;
+  color: #00FF2F;
+  padding: 14px 24px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 200px;
+  justify-content: center;
+}
+
+.download-btn:hover {
+  background: #00FF2F;
+  color: black;
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 255, 47, 0.3);
+}
+
+.download-btn i {
+  font-size: 1.2em;
+  transition: transform 0.3s ease;
+}
+
+.download-btn:hover i {
+  transform: rotate(360deg);
+}
+
+.download-info {
+  font-size: 0.8rem;
+  color: #777;
+  margin-top: 4px;
+}
+
+.update-date {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.update-date i {
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin { 0% { transform: rotate(0deg); }100% { transform: rotate(360deg); }}
+.footer-menu a { background: none;color: black;padding: 0;text-decoration: none;
+  font-weight: 500;transition: all 0.3s ease;}
+
+.footer-menu a:hover { background: none;text-decoration: underline;
+  color: black;}
+
+.gradient-section {background: linear-gradient(to bottom, white, black);height: 300px;
+  width: 100%;}
+.gradient-section2 {background: linear-gradient(to bottom, black, white);
+  height: 300px;width: 100%;}
+.bg1 {background: url(splay1.gif);background-size: 600px;background-position: center;background-attachment: fixed;
+  background-repeat: no-repeat;display: flex; justify-content: center;align-items: center;}
+.bg2 {background: url(game1.gif);background-size: 600px;background-position: center; background-attachment: fixed;
+  background-repeat: no-repeat;display: flex;justify-content: center;align-items: center;}
+.bg3 {background: url(custom.gif);background-size: 600px;background-position: center;background-attachment: fixed;
+background-repeat: no-repeat;display: flex;justify-content: center;align-items: center;}
+
+</style>
+</head>
+<body>
+  <body>
+  <div class="intro-fixed">
+    <h1>HELLO.</h1>
+  </div>
+</body>
+
+<nav>
+  <div class="wrap flex">
+    <img src="logo.png" class="logo-img">
+    <ul class="flex">
+      <li><a href="#">로그인</a></li>
+      <li><a href="#">회원가입</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header>
+<div class="bg-intro">
+  <div class="position1" style="top: 50%; left: 50%; transform: translate(-50%, -50%);">
+    <img src="logo.gif" class="img-center" style="width: 1000px; height: auto">
+  </div>
+</div>
+</header>
+
+<section class="q-background">
+  <div class="q-wrap">
+    <section class="q-block left">
+      <div class="q-content">
+        <div class="q-item">
+          <div class="q-img-wrapper">
+            <img src="house1.png" alt="기본 집1" class="q-img default-img">
+            <img src="house1_hover.png" alt="호버 집1" class="q-img hover-img">
+            <div class="q-text">
+              <p>Q1.<br><br><br><br><br><br>현실에서 식물을 자꾸만 죽이나요?</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="q-block right">
+      <div class="q-content">
+        <div class="q-item">
+          <div class="q-img-wrapper">
+            <img src="house2.png" alt="기본 집2" class="q-img default-img">
+            <img src="house2_hover.png" alt="호버 집2" class="q-img hover-img">
+            <div class="q-text">
+              <p>Q2.<br><br><br><br><br><br>바쁜 일상 속에서 식물을 돌볼 시간이 부족한가요?</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="q-block left">
+      <div class="q-content">
+        <div class="q-item">
+          <div class="q-img-wrapper">
+            <img src="house3.png" alt="기본 집3" class="q-img default-img">
+            <img src="house3_hover.png" alt="호버 집3" class="q-img hover-img">
+            <div class="q-text">
+              <p>Q3.<br><br><br><br><br><br>왠지 모르게 식물에게 죄책감을 가지게 되나요?</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <img src="welcome.gif" class="img-center drop" style="padding-bottom:30px" />
+    <p class="center-text" >그런 당신을 위해 등장한 초록빛 기적,<br> <strong>Always Green!</strong>은 현실의 식물 킬러도 <strong>안전하게, 재밌게, 귀엽게</strong> 식물을 키울 수 있도록 만든 사이버 식물 키우기 서비스입니다.</p>
+  </div>
+</section>
+
+<section class="section">
+      <div class="wrap">
+      <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExYTZ0Z2ZmdW10c2RvYjIxbWlncWRrMmg1c28wdDRmZ25sM3JjeWl1aSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/OH9zWD6tKD9E5QL7Ru/giphy.gif" class="img-center fill-image" style="margin-bottom: 50px;">
+    </div>
+    <div class="wrap3" style="border-top: 2px solid black; padding-top: 50px;">
+        <div class="left">
+          <h2>게임처럼 즐기는<br> 식물 키우기</h2>
+        </div>
+        <div class="right">
+          <p><strong>Always Green!</strong>은 단순한 가드닝 시뮬레이션이 아닙니다.<br>
+          게임처럼 미션을 깨고, 경험치를 쌓고, 아이템을 수집하며<br>
+          식물과 함께 성장하는 진짜 재미를 느낄 수 있어요! 🌱💪</p>
+        </div>
+      </div>
+</section>
+
+<div class="gradient-section"></div>
+
+<section class="black">
+  <section class="section1">
+    <div class="wrap2">
+    <img src="logo1.png" class="img-center logoimg">
+    <h2>가상 식물 키우기 시뮬레이션</h2>
+    <p>물 주기, 햇빛 받기, 비료 주기 등 현실감 있는 식물 관리를 할 수 있어요!</p>
+    </div>
+  </section>
+<section class="bg1 section2 wrap2"></section>
+  <section class="section1">
+    <div class="wrap2">
+    <img src="logo2.png" class="img-center logoimg">
+    <h2>내 맘대로 커스터마이징</h2>
+    <p>식물을 고르고 화분 등 데코 아이템까지 무제한으로 꾸며요!</p>
+    </div>
+  </section>
+<section class="bg3 section2 wrap2"></section>
+  <section class="section1">
+    <div class="wrap2">
+    <img src="logo3.png" class="img-center logoimg">
+    <h2>AR/ 현실 연계 서비스</h2>
+    <p>화분을 직접 실제 나의 방에 배치해 볼 수 있어요!</p>
+    </div>
+  </section>
+  <section class="bg2 section2 wrap2"></section>
+</section>
+
+<div class="gradient-section2"></div>
+<section class="section">
+   <div class="wrap">
+      <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExcHhyNHN1MzA0ZTJkN3Z1ZDd2aGdoMWFkN3ljc2RtNWQwNmI4bmFiaiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/gHnSgJ75vlFfkHxSvi/giphy.gif" class="img-center fill-image" style="padding-bottom: 50px;">
+    </div>
+  <div class="wrap3">
+    <div class="left">
+      <h2>실시간 후기 및<br> 랭킹 시스템</h2>
+    </div>
+    <div class="right">
+      <p>식물을 키우며 나만의 이야기를 남기고, 순위를 겨뤄보세요!
+        성장 과정을 사진과 함께 기록하고, 후기를 공유해보세요. 다른 유저들의 댓글과 좋아요도 받을 수 있어요.
+        커뮤니티에서는 인기 식물 랭킹이 매겨져, 가장 많은 공감을 받은 식물이 순위에 오르게 됩니다.
+        오늘은 어떤 식물이 주인공이 될까요? 당신의 식물을 자랑해보세요!
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="wrap">
+    <img src="logo4.png" class="img-center logoimg">
+    <h2>후기를 살펴보세요!</h2>
+    <p style="padding-bottom:100px">“나 이 식물 이렇게까지 키워봤다” 자랑하는 귀염뽀짝 후기들 가득</p>
+<div class="review-slider-outer">
+    <div class="review-slider">
+      <div class="review-track">
+        
+        <div class="review-card">
+          <div class="review-header">
+            <div class="name"><div class="reviewer-icon"></div> 조윤정</div>
+            <div class="stars">★★★★★</div>
+          </div>
+          <div class="review-text">내 사이버 몬스테라가 이렇게나 컸어요! 식물이 안죽고 무럭무럭 자라는 거였구나!!!!</div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-header">
+            <div class="name"><div class="reviewer-icon"></div>강연우</div>
+            <div class="stars">★★★★★</div>
+          </div>
+          <p class="review-text">제가 식물을 참 좋아하는데요, 손만 대면 죽어서 슬펐는데, 이제는 기뻐요!</p>
+        </div>
+
+        <div class="review-card">
+          <div class="review-header">
+            <div class="name"><div class="reviewer-icon"></div>한평강</div>
+            <div class="stars">★★★★☆</div>
+          </div>
+          <p class="review-text">똥손인데 키울 수 있어서 감동이에요...! 항상 초록초록🌱</p>
+        </div>
+
+        <div class="review-card">
+          <div class="review-header">
+            <div class="name"><div class="reviewer-icon"></div>김아람</div>
+            <div class="stars">★★★★★</div>
+          </div>
+          <p class="review-text">매일 물 주는 재미에 빠졌어요! 우리집이 초록정원이 됐어요.</p>
+        </div>
+
+        <div class="review-card">
+          <div class="review-header">
+            <div class="name"><div class="reviewer-icon"></div>한준희</div>
+            <div class="stars">★★★★★</div>
+          </div>
+          <p class="review-text">우리집 몬스테라좀 보세요 왓더핵!</p>
+        </div>
+
+        <div class="review-card">
+          <div class="review-header">
+            <div class="name"><div class="reviewer-icon"></div>우와와</div>
+            <div class="stars">★★★★★</div>
+          </div>
+          <p class="review-text">와~ 저도 집에 식물이 한가득 너무 기분이 좋아요 푸르고~ 싱그럽고~</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+<!-- 후기와 랭킹 -->
+<section class="section">
+  <div class="wrap">
+  <img src="logo5.png" class="img-center logoimg">
+  <h2>실시간 랭킹에 올라가요!</h2>
+  <p style="padding-bottom:100px">다른 유저와 함께 성장해보세요</p>
+  <ul class="ranking-list">
+    <li><span class="rank-num">1</span><span class="rank-name">조윤정</span><span class="rank-score">🏆 980점</span></li>
+    <li><span class="rank-num">2</span><span class="rank-name">한준희</span><span class="rank-score">🥈 890점</span></li>
+    <li><span class="rank-num">3</span><span class="rank-name">우와와</span><span class="rank-score">🌟 850점</span></li>
+    <li><span class="rank-num">4</span><span class="rank-name">최예림</span><span class="rank-score">🍃 800점</span></li>
+    <li><span class="rank-num">5</span><span class="rank-name">김푸름</span><span class="rank-score">🌱 780점</span></li>
+  </ul>
+</section>
+  </ul>
+</div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <img src="logo6.png" class="img-center logoimg">
+    <h2>지금 바로 식물키우기를 시작하세요!</h2>
+    <p class="update-date">
+      <i>🔄</i> 최근 업데이트: 2025년 4월 29일
+    </p>
+
+    <div class="download-buttons">
+      <a href="AlwaysGreen.exe" class="download-btn" target="_blank" rel="noopener noreferrer">
+        <i>💻</i> PC 다운로드
+        <span class="download-info">v1.2.0 (45MB)</span>
+      </a>
+      <a href="https://play.google.com/store/apps/details?id=com.alwaysgreen.app" class="download-btn" target="_blank" rel="noopener noreferrer">
+        <i>📱</i> Android
+        <span class="download-info">v1.2.0 (32MB)</span>
+      </a>
+      <a href="https://apps.apple.com/app/always-green/id1234567890" class="download-btn" target="_blank" rel="noopener noreferrer">
+        <i>🍎</i> iOS
+        <span class="download-info">v1.2.0 (38MB)</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- 푸터 -->
+<footer class="footer" style="border-top: 2px solid black">
+  <div class="footer-wrap">
+    <div class="footer-top flex">
+      <p>Copyright ⓒ Always Green</p>
+      <ul class="footer-menu flex">
+        <li><a href="#">개인정보처리방침</a></li>
+        <li><a href="#">서비스 이용약관</a></li>
+        <li><a href="#">사업자정보 확인</a></li>
+        <li><a href="#">고객센터</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-main flex" style="margin-top: 30px;">
+      <div class="footer-info" style="text-align: left;">
+        <p><strong>Always Green 대표자</strong> 한평강</p>
+        <p>이메일: han.pk0193@gmail.com</p>
+        <p>주소: 서울 노원구 공릉로 232, 다빈치관 6층</p>
+        <p>업태: 서비스업 | 종목: 식물 키우기 가상 서비스</p>
+        <p>통신판매업신고: 2025-서울노원-6666</p>
+        <p>사업자등록번호: 123-45-67890</p>
+      </div>
+
+      <div class="footer-logo" style="margin-top: 30px;">
+        <img src="logo.png" height="60px">
+      </div>
+    </div>
+  </div>
+</footer>
+
+</html>
